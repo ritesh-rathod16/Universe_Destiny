@@ -1,0 +1,3083 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cosmic Destiny - Astrology & Chakra Guidance</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Cosmic Color Palette */
+        :root {
+            --cosmic-dark: #0a0e17;
+            --cosmic-purple: #3a0ca3;
+            --cosmic-blue: #4361ee;
+            --cosmic-light: #4cc9f0;
+            --cosmic-gold: #f9c74f;
+            --cosmic-pink: #f72585;
+            --cosmic-text: #e9ecef;
+            --cosmic-overlay: rgba(10, 14, 23, 0.85);
+            
+            /* Chakra Colors */
+            --root-chakra: #ff0000;
+            --sacral-chakra: #ff7700;
+            --solar-chakra: #ffff00;
+            --heart-chakra: #00ff00;
+            --throat-chakra: #0000ff;
+            --third-eye-chakra: #4b0082;
+            --crown-chakra: #9400d3;
+        }
+        
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-color: var(--cosmic-dark);
+            color: var(--cosmic-text);
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.7;
+            overflow-x: hidden;
+            position: relative;
+            min-height: 100vh;
+        }
+        
+        /* Cosmic Background with Stars */
+        .cosmic-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
+            overflow: hidden;
+        }
+        
+        /* Star Animation */
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle var(--duration, 5s) infinite ease-in-out;
+            opacity: var(--opacity, 0.7);
+        }
+        
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; }
+            50% { opacity: 1; }
+        }
+        
+        /* Shooting Stars */
+        .shooting-star {
+            position: absolute;
+            height: 2px;
+            background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%);
+            transform: rotate(var(--angle, -45deg));
+            animation: shoot var(--duration, 3s) infinite;
+            opacity: 0;
+        }
+        
+        @keyframes shoot {
+            0% {
+                opacity: 0;
+                top: var(--top-start);
+                left: var(--left-start);
+            }
+            10% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+                top: var(--top-end);
+                left: var(--left-end);
+            }
+        }
+        
+        /* Floating Planets */
+        .planet {
+            position: absolute;
+            border-radius: 50%;
+            box-shadow: 0 0 20px rgba(255,255,255,0.1);
+            z-index: -1;
+            animation: float 20s infinite ease-in-out;
+        }
+        
+        .sun {
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, #ffd700 0%, #ff8c00 70%);
+            top: 10%;
+            left: 15%;
+            box-shadow: 0 0 80px rgba(255, 215, 0, 0.7);
+        }
+        
+        .moon {
+            width: 80px;
+            height: 80px;
+            background: radial-gradient(circle, #e0e0e0 0%, #a0a0a0 70%);
+            top: 70%;
+            right: 20%;
+            animation-direction: reverse;
+        }
+        
+        @keyframes float {
+            0%, 100% { 
+                transform: translate(0, 0) rotate(0deg);
+            }
+            25% { 
+                transform: translate(20px, -20px) rotate(5deg);
+            }
+            50% { 
+                transform: translate(-20px, 10px) rotate(-5deg);
+            }
+            75% { 
+                transform: translate(10px, 20px) rotate(3deg);
+            }
+        }
+        
+        /* Content Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 10;
+        }
+        
+        section {
+            padding: 100px 0;
+            position: relative;
+        }
+        
+        /* Typography */
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            margin-bottom: 25px;
+            color: var(--cosmic-gold);
+        }
+        
+        h1 {
+            font-size: 4rem;
+            line-height: 1.2;
+            text-shadow: 0 0 15px rgba(249, 199, 79, 0.5);
+        }
+        
+        h2 {
+            font-size: 2.8rem;
+            text-align: center;
+            position: relative;
+            padding-bottom: 20px;
+            margin-bottom: 50px;
+        }
+        
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(to right, var(--cosmic-purple), var(--cosmic-pink));
+            border-radius: 2px;
+        }
+        
+        h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        
+        p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+        
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 14px 35px;
+            background: linear-gradient(135deg, var(--cosmic-purple), var(--cosmic-pink));
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(58, 12, 163, 0.4);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .btn:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--cosmic-pink), var(--cosmic-purple));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+        
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(247, 37, 133, 0.6);
+        }
+        
+        .btn:hover:before {
+            opacity: 1;
+        }
+        
+        .btn-gold {
+            background: linear-gradient(135deg, var(--cosmic-gold), #e9b320);
+            box-shadow: 0 5px 20px rgba(249, 199, 79, 0.4);
+        }
+        
+        .btn-gold:hover {
+            box-shadow: 0 8px 25px rgba(249, 199, 79, 0.6);
+        }
+        
+        .text-center {
+            text-align: center;
+        }
+        
+        /* Header Styles */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(10, 14, 23, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(74, 107, 238, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-img {
+            height: 50px;
+            margin-right: 15px;
+            animation: pulse 2s infinite;
+        }
+        
+        .logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(to right, var(--cosmic-gold), var(--cosmic-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--cosmic-text);
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            position: relative;
+            white-space: nowrap;
+        }
+        
+        nav ul li a:hover {
+            color: var(--cosmic-gold);
+        }
+        
+        nav ul li a:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--cosmic-gold);
+            transition: width 0.3s;
+        }
+        
+        nav ul li a:hover:after {
+            width: 100%;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            color: var(--cosmic-gold);
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .hero h1 {
+            animation: fadeInDown 1s ease;
+            margin-bottom: 30px;
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            max-width: 600px;
+            animation: fadeInUp 1s ease;
+        }
+        
+        .hero-btns {
+            display: flex;
+            gap: 20px;
+            animation: fadeIn 1.5s ease;
+        }
+        
+        /* Zodiac Wheel */
+        .zodiac-wheel {
+            position: absolute;
+            right: -150px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 600px;
+            height: 600px;
+            animation: rotate 60s infinite linear;
+        }
+        
+        .zodiac-symbol {
+            position: absolute;
+            font-size: 2.5rem;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .zodiac-symbol:hover {
+            transform: scale(1.2);
+            background: rgba(249, 199, 79, 0.2);
+            box-shadow: 0 0 30px rgba(249, 199, 79, 0.4);
+        }
+        
+        @keyframes rotate {
+            from { transform: translateY(-50%) rotate(0deg); }
+            to { transform: translateY(-50%) rotate(360deg); }
+        }
+        
+        /* Features Section */
+        .features-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .feature-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 35px 30px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(74, 107, 238, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 0.8s ease;
+        }
+        
+        .feature-card:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+        
+        .feature-card:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+        
+        .feature-card:nth-child(4) {
+            animation-delay: 0.6s;
+        }
+        
+        .feature-card:nth-child(5) {
+            animation-delay: 0.8s;
+        }
+        
+        .feature-card:nth-child(6) {
+            animation-delay: 1s;
+        }
+        
+        .feature-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--cosmic-purple), var(--cosmic-pink));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .feature-card:hover:before {
+            opacity: 1;
+        }
+        
+        .feature-icon {
+            font-size: 3.5rem;
+            color: var(--cosmic-gold);
+            margin-bottom: 25px;
+            transition: transform 0.3s ease;
+        }
+        
+        .feature-card:hover .feature-icon {
+            transform: scale(1.2);
+        }
+        
+        /* About Section */
+        .about-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .about-img {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            position: relative;
+            animation: fadeInLeft 1s ease;
+        }
+        
+        .about-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s;
+        }
+        
+        .about-img:hover img {
+            transform: scale(1.05);
+        }
+        
+        .about-content {
+            animation: fadeInRight 1s ease;
+        }
+        
+        .about-content h2 {
+            text-align: left;
+        }
+        
+        .about-content h2:after {
+            left: 0;
+            transform: none;
+        }
+        
+        .about-content ul {
+            margin: 25px 0 30px;
+            padding-left: 25px;
+        }
+        
+        .about-content ul li {
+            margin-bottom: 15px;
+            position: relative;
+            animation: fadeInRight 0.5s ease;
+        }
+        
+        .about-content ul li:nth-child(1) { animation-delay: 0.2s; }
+        .about-content ul li:nth-child(2) { animation-delay: 0.4s; }
+        .about-content ul li:nth-child(3) { animation-delay: 0.6s; }
+        .about-content ul li:nth-child(4) { animation-delay: 0.8s; }
+        
+        .about-content ul li:before {
+            content: '✦';
+            position: absolute;
+            left: -25px;
+            color: var(--cosmic-gold);
+        }
+        
+        /* Testimonials Section */
+        .testimonials-section {
+            padding: 80px 0;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .testimonials-container {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+            height: 320px;
+        }
+        
+        .testimonials-track {
+            display: flex;
+            position: absolute;
+            top: 0;
+            left: 0;
+            animation: scrollTestimonials 30s linear infinite;
+        }
+        
+        .testimonial-card {
+            width: 300px;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 0 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            position: relative;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(74, 107, 238, 0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        
+        .testimonial-card:before {
+            content: '\201C';
+            font-size: 6rem;
+            color: rgba(249, 199, 79, 0.1);
+            position: absolute;
+            top: -30px;
+            left: 10px;
+            line-height: 1;
+            z-index: 0;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .testimonial-content {
+            position: relative;
+            z-index: 1;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            position: relative;
+            flex-grow: 1;
+        }
+        
+        .testimonial-text:after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 0;
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(to right, var(--cosmic-purple), var(--cosmic-pink));
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-info h4 {
+            margin-bottom: 5px;
+            font-size: 1.2rem;
+        }
+        
+        .author-info p {
+            color: var(--cosmic-light);
+            font-size: 0.95rem;
+        }
+        
+        @keyframes scrollTestimonials {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        
+        /* Contact Section */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            margin-top: 50px;
+        }
+        
+        .contact-info h3 {
+            margin-bottom: 30px;
+        }
+        
+        .contact-details {
+            margin-bottom: 30px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 25px;
+            animation: fadeInLeft 0.5s ease;
+        }
+        
+        .contact-item:nth-child(1) { animation-delay: 0.2s; }
+        .contact-item:nth-child(2) { animation-delay: 0.4s; }
+        .contact-item:nth-child(3) { animation-delay: 0.6s; }
+        .contact-item:nth-child(4) { animation-delay: 0.8s; }
+        
+        .contact-icon {
+            font-size: 1.8rem;
+            color: var(--cosmic-gold);
+            margin-right: 20px;
+            margin-top: 5px;
+            min-width: 30px;
+        }
+        
+        .contact-text h4 {
+            margin-bottom: 5px;
+            font-size: 1.2rem;
+        }
+        
+        .contact-text p, .contact-text a {
+            color: var(--cosmic-light);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .contact-text a:hover {
+            color: var(--cosmic-gold);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+            color: var(--cosmic-gold);
+            font-size: 1.5rem;
+            transition: all 0.3s;
+            border: 1px solid rgba(249, 199, 79, 0.2);
+        }
+        
+        .social-link:hover {
+            background: var(--cosmic-gold);
+            color: var(--cosmic-dark);
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(249, 199, 79, 0.3);
+        }
+        
+        .contact-form label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--cosmic-text);
+        }
+        
+        .contact-form input,
+        .contact-form textarea,
+        .contact-form select {
+            width: 100%;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(74, 107, 238, 0.2);
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s;
+            margin-bottom: 20px;
+            color: var(--cosmic-text);
+        }
+        
+        .contact-form input:focus,
+        .contact-form textarea:focus,
+        .contact-form select:focus {
+            border-color: var(--cosmic-gold);
+            outline: none;
+            box-shadow: 0 0 10px rgba(249, 199, 79, 0.3);
+        }
+        
+        .contact-form textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        /* Booking Section */
+        .booking-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(74, 107, 238, 0.1);
+        }
+        
+        .booking-steps {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        
+        .booking-steps:before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.1);
+            z-index: 1;
+        }
+        
+        .step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .step-number {
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 10px;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+        
+        .step.active .step-number {
+            background: linear-gradient(135deg, var(--cosmic-purple), var(--cosmic-pink));
+            border-color: var(--cosmic-gold);
+            box-shadow: 0 0 15px rgba(247, 37, 133, 0.5);
+        }
+        
+        .step.completed .step-number {
+            background: var(--cosmic-gold);
+            color: var(--cosmic-dark);
+        }
+        
+        .step-text {
+            font-size: 0.9rem;
+            color: var(--cosmic-light);
+            text-align: center;
+        }
+        
+        .step.active .step-text {
+            color: var(--cosmic-gold);
+            font-weight: 600;
+        }
+        
+        .booking-content {
+            display: none;
+        }
+        
+        .booking-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .service-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .service-option {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(74, 107, 238, 0.1);
+            border-radius: 10px;
+            padding: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .service-option:hover {
+            border-color: var(--cosmic-gold);
+            box-shadow: 0 5px 15px rgba(249, 199, 79, 0.2);
+            transform: translateY(-5px);
+        }
+        
+        .service-option.selected {
+            border-color: var(--cosmic-gold);
+            background: rgba(249, 199, 79, 0.05);
+        }
+        
+        .service-option h4 {
+            margin-bottom: 10px;
+            color: var(--cosmic-gold);
+        }
+        
+        .service-option .price {
+            font-weight: 700;
+            color: var(--cosmic-gold);
+            margin: 15px 0;
+            font-size: 1.3rem;
+        }
+        
+        .calendar-container {
+            margin-bottom: 30px;
+        }
+        
+        .date-picker {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        
+        .date-select {
+            display: flex;
+            flex-direction: column;
+            width: 48%;
+        }
+        
+        .date-select label {
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        
+        .date-select select {
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(74, 107, 238, 0.2);
+            border-radius: 8px;
+            color: var(--cosmic-text);
+        }
+        
+        .time-slots {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .time-slot {
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 1px solid rgba(74, 107, 238, 0.1);
+        }
+        
+        .time-slot:hover {
+            background: rgba(74, 107, 238, 0.1);
+        }
+        
+        .time-slot.selected {
+            background: var(--cosmic-purple);
+            color: white;
+            border-color: var(--cosmic-light);
+        }
+        
+        .booking-summary {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 25px;
+            margin-top: 30px;
+            border: 1px solid rgba(74, 107, 238, 0.1);
+        }
+        
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
+        }
+        
+        .summary-total {
+            font-weight: 700;
+            font-size: 1.3rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 15px;
+            margin-top: 10px;
+        }
+        
+        .booking-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+        
+        /* Gemstone Compatibility */
+        .compatibility-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 50px;
+        }
+        
+        .compatibility-form {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 30px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(74, 107, 238, 0.1);
+            animation: fadeInLeft 1s ease;
+        }
+        
+        .compatibility-result {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 30px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(74, 107, 238, 0.1);
+            display: none;
+            animation: fadeInRight 1s ease;
+        }
+        
+        .compatibility-score {
+            text-align: center;
+            margin: 30px 0;
+        }
+        
+        .score-circle {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: white;
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: conic-gradient(var(--cosmic-gold) 0% 87%, rgba(255, 255, 255, 0.1) 87% 100%);
+            position: relative;
+            box-shadow: 0 0 20px rgba(249, 199, 79, 0.2);
+            animation: pulse 2s infinite;
+        }
+        
+        .score-circle:before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            bottom: 10px;
+            border-radius: 50%;
+            background: var(--cosmic-overlay);
+        }
+        
+        .score-circle span {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .gemstones-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .gemstone-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(74, 107, 238, 0.1);
+            animation: fadeInUp 0.5s ease;
+        }
+        
+        .gemstone-card:nth-child(1) { animation-delay: 0.2s; }
+        .gemstone-card:nth-child(2) { animation-delay: 0.4s; }
+        .gemstone-card:nth-child(3) { animation-delay: 0.6s; }
+        .gemstone-card:nth-child(4) { animation-delay: 0.8s; }
+        
+        .gemstone-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--cosmic-gold);
+            box-shadow: 0 5px 15px rgba(249, 199, 79, 0.2);
+        }
+        
+        .gemstone-icon {
+            font-size: 2.5rem;
+            color: var(--cosmic-gold);
+            margin-bottom: 15px;
+        }
+        
+        /* Footer */
+        footer {
+            background: rgba(10, 14, 23, 0.9);
+            padding: 80px 0 30px;
+            position: relative;
+            border-top: 1px solid rgba(74, 107, 238, 0.2);
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-col h3 {
+            color: var(--cosmic-gold);
+            margin-bottom: 25px;
+            font-size: 1.5rem;
+        }
+        
+        .footer-col p, .footer-col a {
+            color: var(--cosmic-light);
+            margin-bottom: 15px;
+            display: block;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-col a:hover {
+            color: var(--cosmic-gold);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--cosmic-light);
+            font-size: 1rem;
+        }
+        
+        /* Popup Styles */
+        .popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .popup.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .popup-content {
+            background: var(--cosmic-overlay);
+            border-radius: 20px;
+            padding: 50px;
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(249, 199, 79, 0.2);
+            position: relative;
+            transform: scale(0.8);
+            transition: transform 0.3s ease;
+        }
+        
+        .popup.active .popup-content {
+            transform: scale(1);
+        }
+        
+        .popup-icon {
+            font-size: 5rem;
+            color: var(--cosmic-gold);
+            margin-bottom: 20px;
+            animation: pulse 2s infinite;
+        }
+        
+        .popup h3 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--cosmic-gold);
+        }
+        
+        .popup p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+        
+        .close-popup {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: var(--cosmic-light);
+            font-size: 1.8rem;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        
+        .close-popup:hover {
+            color: var(--cosmic-gold);
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        /* Page Transitions */
+        .page {
+            display: none;
+            animation: fadeIn 0.5s ease forwards;
+        }
+        
+        .page.active {
+            display: block;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .about-container,
+            .contact-container,
+            .compatibility-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .about-content h2,
+            .about-content h2:after {
+                text-align: center;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            
+            .about-img {
+                order: -1;
+                max-width: 500px;
+                margin: 0 auto;
+            }
+            
+            .zodiac-wheel {
+                display: none;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-container {
+                padding: 0 15px;
+            }
+            
+            nav {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 80%;
+                height: calc(100vh - 80px);
+                background: rgba(10, 14, 23, 0.95);
+                backdrop-filter: blur(10px);
+                box-shadow: 2px 0 20px rgba(0, 0, 0, 0.3);
+                transition: left 0.3s;
+                z-index: 999;
+            }
+            
+            nav.active {
+                left: 0;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                padding: 30px;
+            }
+            
+            nav ul li {
+                margin: 20px 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .hero-btns {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .booking-steps {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 20px;
+            }
+            
+            .booking-steps:before {
+                display: none;
+            }
+            
+            .step {
+                flex-direction: row;
+                align-items: center;
+                gap: 15px;
+            }
+            
+            .step-number {
+                margin-bottom: 0;
+            }
+            
+            .popup-content {
+                padding: 30px;
+            }
+            
+            .date-picker {
+                flex-direction: column;
+            }
+            
+            .date-select {
+                width: 100%;
+                margin-bottom: 15px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            section {
+                padding: 70px 0;
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            h2 {
+                font-size: 2.2rem;
+            }
+            
+            .booking-container {
+                padding: 30px 20px;
+            }
+            
+            .testimonial-card {
+                width: 280px;
+                height: 280px;
+            }
+        }
+
+        /* Chakra Animation Section */
+        .chakra-section {
+            padding: 100px 0;
+            background: linear-gradient(rgba(10, 14, 23, 0.9), rgba(10, 14, 23, 0.9));
+            position: relative;
+            overflow: hidden;
+        }
+
+        .chakra-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .chakra-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .chakra-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(74, 107, 238, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .chakra-visual {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 30px rgba(0,0,0,0.3);
+        }
+
+        .chakra-core {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            position: absolute;
+            z-index: 2;
+            box-shadow: 0 0 20px rgba(255,255,255,0.2);
+        }
+
+        .chakra-pulse {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            opacity: 0;
+            transform: scale(0.5);
+            z-index: 1;
+        }
+
+        /* Individual Chakra Animations */
+        #root-chakra .chakra-core { background: var(--root-chakra); }
+        #root-chakra .chakra-pulse { 
+            background: var(--root-chakra);
+            animation: chakra-pulse 4s infinite ease-out;
+        }
+
+        #sacral-chakra .chakra-core { background: var(--sacral-chakra); }
+        #sacral-chakra .chakra-pulse { 
+            background: var(--sacral-chakra);
+            animation: chakra-pulse 3s infinite ease-out;
+        }
+
+        #solar-chakra .chakra-core { background: var(--solar-chakra); }
+        #solar-chakra .chakra-pulse { 
+            background: var(--solar-chakra);
+            animation: chakra-pulse 2.5s infinite ease-out;
+        }
+
+        #heart-chakra .chakra-core { background: var(--heart-chakra); }
+        #heart-chakra .chakra-pulse { 
+            background: var(--heart-chakra);
+            animation: chakra-pulse 2s infinite ease-out;
+        }
+
+        #throat-chakra .chakra-core { background: var(--throat-chakra); }
+        #throat-chakra .chakra-pulse { 
+            background: var(--throat-chakra);
+            animation: chakra-pulse 1.5s infinite ease-out;
+        }
+
+        #third-eye-chakra .chakra-core { background: var(--third-eye-chakra); }
+        #third-eye-chakra .chakra-pulse { 
+            background: var(--third-eye-chakra);
+            animation: chakra-pulse 1s infinite ease-out;
+        }
+
+        #crown-chakra .chakra-core { background: var(--crown-chakra); }
+        #crown-chakra .chakra-pulse { 
+            background: var(--crown-chakra);
+            animation: chakra-pulse 0.8s infinite ease-out;
+        }
+
+        @keyframes chakra-pulse {
+            0% { transform: scale(0.5); opacity: 0.7; }
+            100% { transform: scale(1.5); opacity: 0; }
+        }
+
+        .chakra-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .chakra-frequency {
+            font-size: 1.1rem;
+            color: var(--cosmic-light);
+            margin-bottom: 15px;
+        }
+
+        .chakra-description {
+            font-size: 0.95rem;
+        }
+
+        /* Scientific Overlays */
+        .science-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            opacity: 0.3;
+        }
+
+        .eeg-wave {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 20px,
+                var(--cosmic-light) 20px,
+                var(--cosmic-light) 22px
+            );
+            opacity: 0.1;
+        }
+
+        .biofield-grid {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+
+        /* Meditation Guide */
+        .meditation-guide {
+            margin-top: 50px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(74, 107, 238, 0.1);
+        }
+
+        .meditation-steps {
+            margin-top: 20px;
+        }
+
+        .meditation-step {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px dashed rgba(255,255,255,0.1);
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background: var(--cosmic-purple);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+         /* Added mobile-specific booking button styling */
+        @media (max-width: 768px) {
+            nav ul li a.mobile-book-btn {
+                background: linear-gradient(135deg, var(--cosmic-gold), #e9b320);
+                color: var(--cosmic-dark) !important;
+                padding: 10px 20px;
+                border-radius: 50px;
+                text-align: center;
+                display: block;
+                margin-top: 10px;
+                font-weight: 700;
+            }
+            
+            nav ul li a.mobile-book-btn:hover {
+                background: linear-gradient(135deg, #e9b320, var(--cosmic-gold));
+                color: var(--cosmic-dark) !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Cosmic Background -->
+    <div class="cosmic-bg" id="cosmicBg"></div>
+    
+    <!-- Sun and Moon -->
+    <div class="planet sun"></div>
+    <div class="planet moon"></div>
+    
+    <!-- Popup -->
+    <div class="popup" id="popup">
+        <div class="popup-content">
+            <button class="close-popup" id="closePopup"><i class="fas fa-times"></i></button>
+            <div class="popup-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h3>Success!</h3>
+            <p id="popupMessage">Your message has been sent successfully.</p>
+            <button class="btn" id="popupButton">Continue</button>
+        </div>
+    </div>
+    
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <img src="client_logo.jpg" alt=" Logo" class="logo-img">
+                <span class="logo-text">Universe Destiny</span>
+            </div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="#home" class="nav-link active" data-page="home">Home</a></li>
+                    <li><a href="#about" class="nav-link" data-page="about">About</a></li>
+                    <li><a href="#chakras" class="nav-link" data-page="chakras">Chakras</a></li>
+                    <li><a href="#services" class="nav-link" data-page="services">Services</a></li>
+                    <li><a href="#compatibility" class="nav-link" data-page="compatibility">Gemstones</a></li>
+                    <li><a href="#booking" class="nav-link" data-page="booking">Booking</a></li>
+                    <li><a href="#contact" class="nav-link" data-page="contact">Contact</a></li>
+                    <!-- Changed for mobile: Book Now button -->
+                    <li><a href="#booking" class="btn btn-gold mobile-book-btn">Book Now</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <!-- Pages Container -->
+    <main id="pages-container">
+        <!-- Home Page -->
+        <div class="page active" id="home-page">
+            <section class="hero" id="home">
+                <div class="container">
+                    <div class="hero-content">
+                        <h1>Unlock Your Cosmic Destiny</h1>
+                        <p>Discover the secrets of the stars with personalized astrology readings and gemstone recommendations from our expert pandits. Align with the universe and transform your life.</p>
+                        <div class="hero-btns">
+                            <a href="#booking" class="btn nav-link" data-page="booking">Book a Reading</a>
+                            <a href="#compatibility" class="btn btn-gold nav-link" data-page="compatibility">Gemstone Compatibility</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Zodiac Wheel -->
+                <div class="zodiac-wheel">
+                    <div class="zodiac-symbol" style="top: 50px; left: 270px;">♈</div>
+                    <div class="zodiac-symbol" style="top: 140px; left: 400px;">♉</div>
+                    <div class="zodiac-symbol" style="top: 250px; left: 470px;">♊</div>
+                    <div class="zodiac-symbol" style="top: 370px; left: 470px;">♋</div>
+                    <div class="zodiac-symbol" style="top: 480px; left: 400px;">♌</div>
+                    <div class="zodiac-symbol" style="top: 550px; left: 270px;">♍</div>
+                    <div class="zodiac-symbol" style="top: 550px; left: 140px;">♎</div>
+                    <div class="zodiac-symbol" style="top: 480px; left: 20px;">♏</div>
+                    <div class="zodiac-symbol" style="top: 370px; left: -50px;">♐</div>
+                    <div class="zodiac-symbol" style="top: 250px; left: -50px;">♑</div>
+                    <div class="zodiac-symbol" style="top: 140px; left: 20px;">♒</div>
+                    <div class="zodiac-symbol" style="top: 50px; left: 140px;">♓</div>
+                </div>
+            </section>
+            
+            <!-- Featured Services -->
+            <section id="featured-services">
+                <div class="container">
+                    <h2>Featured Services</h2>
+                    <p class="text-center">Discover our most popular astrological services</p>
+                    
+                    <div class="features-container">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-star-and-crescent"></i>
+                            </div>
+                            <h3>Birth Chart Analysis</h3>
+                            <p>Discover your life's purpose, strengths, and challenges through a detailed analysis of your natal chart.</p>
+                            <a href="#services" class="btn nav-link" data-page="services">Learn More</a>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-gem"></i>
+                            </div>
+                            <h3>Gemstone Therapy</h3>
+                            <p>Receive personalized gemstone suggestions to enhance your planetary energies and life circumstances.</p>
+                            <a href="#compatibility" class="btn nav-link" data-page="compatibility">Learn More</a>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                            <h3>Relationship Compatibility</h3>
+                            <p>Understand the cosmic connection between you and your partner with our compatibility readings.</p>
+                            <a href="#services" class="btn nav-link" data-page="services">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Testimonials Section -->
+            <section class="testimonials-section">
+                <div class="container">
+                    <h2>Celestial Testimonials</h2>
+                    <p class="text-center">Stories of transformation from our clients</p>
+                    
+                    <div class="testimonials-container">
+                        <div class="testimonials-track">
+                            <!-- Testimonial 1 -->
+                            <div class="testimonial-card">
+                                <div class="testimonial-content">
+                                    <p class="testimonial-text">The birth chart reading was incredibly accurate and insightful. It helped me understand myself better and gave me direction during a confusing time in my life.</p>
+                                    <div class="testimonial-author">
+                                        <div class="author-info">
+                                            <h4>Sarah Johnson</h4>
+                                            <p>New York, USA</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Testimonial 2 -->
+                            <div class="testimonial-card">
+                                <div class="testimonial-content">
+                                    <p class="testimonial-text">The gemstone recommendation transformed my energy levels and focus. I've experienced significant positive changes since wearing the suggested stones.</p>
+                                    <div class="testimonial-author">
+                                        <div class="author-info">
+                                            <h4>Michael Thompson</h4>
+                                            <p>London, UK</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Testimonial 3 -->
+                            <div class="testimonial-card">
+                                <div class="testimonial-content">
+                                    <p class="testimonial-text">The relationship compatibility reading helped me understand my partner on a deeper level. We've never been more connected thanks to Universe Destiny.</p>
+                                    <div class="testimonial-author">
+                                        <div class="author-info">
+                                            <h4>Priya Sharma</h4>
+                                            <p>Mumbai, India</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Testimonial 4 -->
+                            <div class="testimonial-card">
+                                <div class="testimonial-content">
+                                    <p class="testimonial-text">The career guidance session helped me make a crucial decision. I'm now in a job that aligns with my cosmic purpose and brings me joy every day.</p>
+                                    <div class="testimonial-author">
+                                        <div class="author-info">
+                                            <h4>David Chen</h4>
+                                            <p>Singapore</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Duplicates for continuous scrolling -->
+                            <div class="testimonial-card">
+                                <div class="testimonial-content">
+                                    <p class="testimonial-text">The birth chart reading was incredibly accurate and insightful. It helped me understand myself better and gave me direction during a confusing time in my life.</p>
+                                    <div class="testimonial-author">
+                                        <div class="author-info">
+                                            <h4>Sarah Johnson</h4>
+                                            <p>New York, USA</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="testimonial-card">
+                                <div class="testimonial-content">
+                                    <p class="testimonial-text">The gemstone recommendation transformed my energy levels and focus. I've experienced significant positive changes since wearing the suggested stones.</p>
+                                    <div class="testimonial-author">
+                                        <div class="author-info">
+                                            <h4>Michael Thompson</h4>
+                                            <p>London, UK</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="testimonial-card">
+                                <div class="testimonial-content">
+                                    <p class="testimonial-text">The relationship compatibility reading helped me understand my partner on a deeper level. We've never been more connected thanks to Universe Destiny.</p>
+                                    <div class="testimonial-author">
+                                        <div class="author-info">
+                                            <h4>Priya Sharma</h4>
+                                            <p>Mumbai, India</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="testimonial-card">
+                                <div class="testimonial-content">
+                                    <p class="testimonial-text">The career guidance session helped me make a crucial decision. I'm now in a job that aligns with my cosmic purpose and brings me joy every day.</p>
+                                    <div class="testimonial-author">
+                                        <div class="author-info">
+                                            <h4>David Chen</h4>
+                                            <p>Singapore</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        
+        <!-- Chakras Page -->
+        <div class="page" id="chakras-page">
+            <section class="chakra-section" id="chakras">
+                <div class="container">
+                    <h2>Chakra Energy Science</h2>
+                    <p class="text-center">Explore the vibrational frequencies of your body's energy centers with guidance from our expert pandits</p>
+                    
+                    <div class="chakra-grid">
+                        <!-- Root Chakra -->
+                        <div class="chakra-card" id="root-chakra">
+                            <div class="chakra-visual">
+                                <div class="chakra-core"></div>
+                                <div class="chakra-pulse"></div>
+                                <div class="science-overlay">
+                                    <div class="eeg-wave"></div>
+                                    <div class="biofield-grid"></div>
+                                </div>
+                            </div>
+                            <div class="chakra-info">
+                                <h3>Root Chakra</h3>
+                                <div class="chakra-frequency">4 Hz</div>
+                                <p class="chakra-description">Pandit guidance: Ground yourself with earth element meditation for stability and security.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Sacral Chakra -->
+                        <div class="chakra-card" id="sacral-chakra">
+                            <div class="chakra-visual">
+                                <div class="chakra-core"></div>
+                                <div class="chakra-pulse"></div>
+                                <div class="science-overlay">
+                                    <div class="eeg-wave"></div>
+                                    <div class="biofield-grid"></div>
+                                </div>
+                            </div>
+                            <div class="chakra-info">
+                                <h3>Sacral Chakra</h3>
+                                <div class="chakra-frequency">6 Hz</div>
+                                <p class="chakra-description">Pandit guidance: Enhance creativity and emotional flow with water element rituals.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Solar Plexus Chakra -->
+                        <div class="chakra-card" id="solar-chakra">
+                            <div class="chakra-visual">
+                                <div class="chakra-core"></div>
+                                <div class="chakra-pulse"></div>
+                                <div class="science-overlay">
+                                    <div class="eeg-wave"></div>
+                                    <div class="biofield-grid"></div>
+                                </div>
+                            </div>
+                            <div class="chakra-info">
+                                <h3>Solar Plexus</h3>
+                                <div class="chakra-frequency">10 Hz</div>
+                                <p class="chakra-description">Pandit guidance: Strengthen personal power with fire element practices and affirmations.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Heart Chakra -->
+                        <div class="chakra-card" id="heart-chakra">
+                            <div class="chakra-visual">
+                                <div class="chakra-core"></div>
+                                <div class="chakra-pulse"></div>
+                                <div class="science-overlay">
+                                    <div class="eeg-wave"></div>
+                                    <div class="biofield-grid"></div>
+                                </div>
+                            </div>
+                            <div class="chakra-info">
+                                <h3>Heart Chakra</h3>
+                                <div class="chakra-frequency">16 Hz</div>
+                                <p class="chakra-description">Pandit guidance: Cultivate compassion through air element meditations and heart-opening poses.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Throat Chakra -->
+                        <div class="chakra-card" id="throat-chakra">
+                            <div class="chakra-visual">
+                                <div class="chakra-core"></div>
+                                <div class="chakra-pulse"></div>
+                                <div class="science-overlay">
+                                    <div class="eeg-wave"></div>
+                                    <div class="biofield-grid"></div>
+                                </div>
+                            </div>
+                            <div class="chakra-info">
+                                <h3>Throat Chakra</h3>
+                                <div class="chakra-frequency">42.5 Hz</div>
+                                <p class="chakra-description">Pandit guidance: Express your truth with sound healing and mantra chanting practices.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Third Eye Chakra -->
+                        <div class="chakra-card" id="third-eye-chakra">
+                            <div class="chakra-visual">
+                                <div class="chakra-core"></div>
+                                <div class="chakra-pulse"></div>
+                                <div class="science-overlay">
+                                    <div class="eeg-wave"></div>
+                                    <div class="biofield-grid"></div>
+                                </div>
+                            </div>
+                            <div class="chakra-info">
+                                <h3>Third Eye</h3>
+                                <div class="chakra-frequency">110 Hz</div>
+                                <p class="chakra-description">Pandit guidance: Enhance intuition with light-based meditations and psychic development.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Crown Chakra -->
+                        <div class="chakra-card" id="crown-chakra">
+                            <div class="chakra-visual">
+                                <div class="chakra-core"></div>
+                                <div class="chakra-pulse"></div>
+                                <div class="science-overlay">
+                                    <div class="eeg-wave"></div>
+                                    <div class="biofield-grid"></div>
+                                </div>
+                            </div>
+                            <div class="chakra-info">
+                                <h3>Crown Chakra</h3>
+                                <div class="chakra-frequency">172.06 Hz</div>
+                                <p class="chakra-description">Pandit guidance: Connect to cosmic consciousness through transcendental meditation.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Pandit Guidance -->
+                    <div class="meditation-guide">
+                        <h3>Pandit Guidance for Chakra Alignment</h3>
+                        <p>Our expert pandits offer personalized guidance based on your astrological chart:</p>
+                        
+                        <div class="meditation-steps">
+                            <div class="meditation-step">
+                                <div class="step-number">1</div>
+                                <div class="step-content">
+                                    <h4>Personalized Chakra Assessment</h4>
+                                    <p>Our pandits analyze your birth chart to identify which chakras need balancing based on planetary positions.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="meditation-step">
+                                <div class="step-number">2</div>
+                                <div class="step-content">
+                                    <h4>Astrological Timing</h4>
+                                    <p>We determine the most auspicious times for chakra work based on moon phases and planetary transits.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="meditation-step">
+                                <div class="step-number">3</div>
+                                <div class="step-content">
+                                    <h4>Mantra Prescription</h4>
+                                    <p>Receive personalized mantras for each chakra based on your astrological configuration.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="meditation-step">
+                                <div class="step-number">4</div>
+                                <div class="step-content">
+                                    <h4>Gemstone Therapy</h4>
+                                    <p>Our pandits recommend specific gemstones to enhance chakra energy based on your birth chart.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="meditation-step">
+                                <div class="step-number">5</div>
+                                <div class="step-content">
+                                    <h4>Vedic Rituals</h4>
+                                    <p>Participate in ancient Vedic rituals designed to balance chakras and harmonize cosmic energies.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        
+        <!-- About Page -->
+        <div class="page" id="about-page">
+            <section id="about">
+                <div class="container">
+                    <h2>Our Cosmic Journey</h2>
+                    <p class="text-center">For centuries, astrology has guided humanity through the cosmic dance of planets and stars</p>
+                    
+                    <div class="about-container">
+                        <div class="about-content">
+                            <h3>Ancient Wisdom, Modern Guidance</h3>
+                            <p>Our lineage of pandits has preserved Vedic astrological knowledge for over 12 generations. We combine ancient wisdom with contemporary understanding to provide insights relevant to modern life.</p>
+                            
+                            <h3>Our Approach</h3>
+                            <p>We believe astrology is a tool for self-discovery and empowerment, not fatalism. Our readings help you understand cosmic influences so you can make conscious choices aligned with your true path.</p>
+                            
+                            <h3>Our Pandits</h3>
+                            <ul>
+                                <li>Certified Jyotish Acharyas with decades of experience</li>
+                                <li>Specialized in Vedic astrology and gemstone therapy</li>
+                                <li>Fluent in both traditional and psychological approaches</li>
+                                <li>Committed to ethical practice and client confidentiality</li>
+                            </ul>
+                            
+                            <a href="#booking" class="btn">Consult Our Pandits</a>
+                        </div>
+                        
+                        <div class="about-img">
+                            <img src="https://images.unsplash.com/photo-1601233749202-95d04d5b3c00?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1076&q=80" alt="Vedic Astrologer">
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Our Team -->
+            <section id="team">
+                <div class="container">
+                    <h2>Meet Our Expert Pandits</h2>
+                    <p class="text-center">Our team of certified astrologers and gemstone specialists</p>
+                    
+                    <div class="features-container">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-user-astronaut"></i>
+                            </div>
+                            <h3>Pandit Rajesh Sharma</h3>
+                            <p>Master of Vedic Astrology with 25+ years of experience. Specializes in birth chart analysis and gemstone therapy.</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-user-astronaut"></i>
+                            </div>
+                            <h3>Pandita Priya Patel</h3>
+                            <p>Relationship compatibility expert with expertise in synastry readings and marriage compatibility analysis.</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-user-astronaut"></i>
+                            </div>
+                            <h3>Pandit Arjun Kapoor</h3>
+                            <p>Career guidance specialist focusing on planetary influences on professional growth and financial prosperity.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        
+        <!-- Services Page -->
+        <div class="page" id="services-page">
+            <section id="services">
+                <div class="container">
+                    <h2>Astrological Services</h2>
+                    <p class="text-center">Personalized guidance for all aspects of life</p>
+                    
+                    <div class="features-container">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-star-and-crescent"></i>
+                            </div>
+                            <h3>Birth Chart Reading</h3>
+                            <p>Discover your life's purpose, strengths, and challenges through a detailed analysis of your natal chart.</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                            <h3>Relationship Compatibility</h3>
+                            <p>Understand the cosmic connection between you and your partner with our compatibility readings.</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-gem"></i>
+                            </div>
+                            <h3>Gemstone Therapy</h3>
+                            <p>Receive personalized gemstone suggestions to enhance your planetary energies and life circumstances.</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-home"></i>
+                            </div>
+                            <h3>Vastu Consultation</h3>
+                            <p>Align your living space with cosmic energies for health, prosperity, and harmony.</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-briefcase"></i>
+                            </div>
+                            <h3>Career Guidance</h3>
+                            <p>Discover your ideal career path based on your astrological strengths and planetary positions.</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-baby"></i>
+                            </div>
+                            <h3>Child Naming Ceremony</h3>
+                            <p>Select the perfect name for your child based on their birth chart and planetary influences.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Pricing Section -->
+            <section id="pricing">
+                <div class="container">
+                    <h2>Service Pricing</h2>
+                    <p class="text-center">Choose the perfect service for your needs</p>
+                    
+                    <div class="features-container">
+                        <div class="feature-card">
+                            <h3>Basic Reading</h3>
+                            <div class="price" style="font-size: 2.5rem; margin: 20px 0;">$99</div>
+                            <ul style="text-align: left; margin-bottom: 30px;">
+                                <li>30-minute consultation</li>
+                                <li>Basic birth chart overview</li>
+                                <li>General guidance</li>
+                                <li>Email summary</li>
+                            </ul>
+                            <a href="#booking" class="btn nav-link" data-page="booking">Book Now</a>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <h3>Standard Reading</h3>
+                            <div class="price" style="font-size: 2.5rem; margin: 20px 0;">$149</div>
+                            <ul style="text-align: left; margin-bottom: 30px;">
+                                <li>60-minute consultation</li>
+                                <li>Detailed birth chart analysis</li>
+                                <li>Relationship/career focus</li>
+                                <li>PDF report included</li>
+                            </ul>
+                            <a href="#booking" class="btn nav-link" data-page="booking">Book Now</a>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <h3>Premium Reading</h3>
+                            <div class="price" style="font-size: 2.5rem; margin: 20px 0;">$249</div>
+                            <ul style="text-align: left; margin-bottom: 30px;">
+                                <li>90-minute consultation</li>
+                                <li>Comprehensive analysis</li>
+                                <li>Gemstone recommendations</li>
+                                <li>Personalized action plan</li>
+                                <li>Follow-up session included</li>
+                            </ul>
+                            <a href="#booking" class="btn nav-link" data-page="booking">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        
+        <!-- Gemstones Page -->
+        <div class="page" id="compatibility-page">
+            <section id="compatibility">
+                <div class="container">
+                    <h2>Gemstone Compatibility</h2>
+                    <p class="text-center">Discover which gemstones harmonize with your cosmic energy</p>
+                    
+                    <div class="compatibility-container">
+                        <div class="compatibility-form">
+                            <h3>Find Your Perfect Gemstone</h3>
+                            <form id="gemstoneForm">
+                                <div class="form-group">
+                                    <label for="name">Your Name</label>
+                                    <input type="text" id="name" name="name" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="dob">Date of Birth</label>
+                                    <input type="date" id="dob" name="dob" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="birthTime">Time of Birth (optional)</label>
+                                    <input type="time" id="birthTime" name="birthTime">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="zodiac">Zodiac Sign</label>
+                                    <select id="zodiac" name="zodiac" required>
+                                        <option value="">Select your sign</option>
+                                        <option value="aries">Aries (Mar 21 - Apr 19)</option>
+                                        <option value="taurus">Taurus (Apr 20 - May 20)</option>
+                                        <option value="gemini">Gemini (May 21 - Jun 20)</option>
+                                        <option value="cancer">Cancer (Jun 21 - Jul 22)</option>
+                                        <option value="leo">Leo (Jul 23 - Aug 22)</option>
+                                        <option value="virgo">Virgo (Aug 23 - Sep 22)</option>
+                                        <option value="libra">Libra (Sep 23 - Oct 22)</option>
+                                        <option value="scorpio">Scorpio (Oct 23 - Nov 21)</option>
+                                        <option value="sagittarius">Sagittarius (Nov 22 - Dec 21)</option>
+                                        <option value="capricorn">Capricorn (Dec 22 - Jan 19)</option>
+                                        <option value="aquarius">Aquarius (Jan 20 - Feb 18)</option>
+                                        <option value="pisces">Pisces (Feb 19 - Mar 20)</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="purpose">What are you seeking?</label>
+                                    <select id="purpose" name="purpose" required>
+                                        <option value="">Select purpose</option>
+                                        <option value="wealth">Wealth & Prosperity</option>
+                                        <option value="health">Health & Vitality</option>
+                                        <option value="love">Love & Relationships</option>
+                                        <option value="career">Career Success</option>
+                                        <option value="protection">Protection & Grounding</option>
+                                        <option value="spirituality">Spiritual Growth</option>
+                                    </select>
+                                </div>
+                                
+                                <button type="submit" class="btn">Find My Gemstones</button>
+                            </form>
+                        </div>
+                        
+                        <div class="compatibility-result" id="gemstone-result">
+                            <h3>Your Gemstone Profile</h3>
+                            <div class="compatibility-score">
+                                <div class="score-circle"><span id="compatibility-percentage">87%</span></div>
+                                <p id="compatibility-with">Compatibility with Ruby</p>
+                            </div>
+                            
+                            <p>Based on your astrological profile, these gemstones will harmonize with your energy:</p>
+                            
+                            <div class="gemstones-grid">
+                                <div class="gemstone-card">
+                                    <div class="gemstone-icon">
+                                        <i class="fas fa-gem" style="color: #e0115f;"></i>
+                                    </div>
+                                    <h4>Ruby</h4>
+                                    <p>For vitality and passion</p>
+                                </div>
+                                
+                                <div class="gemstone-card">
+                                    <div class="gemstone-icon">
+                                        <i class="fas fa-gem" style="color: #0077be;"></i>
+                                    </div>
+                                    <h4>Blue Sapphire</h4>
+                                    <p>For wisdom and focus</p>
+                                </div>
+                                
+                                <div class="gemstone-card">
+                                    <div class="gemstone-icon">
+                                        <i class="fas fa-gem" style="color: #50c878;"></i>
+                                    </div>
+                                    <h4>Emerald</h4>
+                                    <p>For love and harmony</p>
+                                </div>
+                                
+                                <div class="gemstone-card">
+                                    <div class="gemstone-icon">
+                                        <i class="fas fa-gem" style="color: #f0e68c;"></i>
+                                    </div>
+                                    <h4>Yellow Sapphire</h4>
+                                    <p>For prosperity</p>
+                                </div>
+                            </div>
+                            
+                            <div style="margin-top: 30px;">
+                                <h4>Recommended Wearing Method</h4>
+                                <p id="wearing-method">Wear Ruby in a gold ring on your ring finger. For maximum benefit, energize your gemstone during a waxing moon.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Gemstone Benefits -->
+            <section id="benefits">
+                <div class="container">
+                    <h2>Gemstone Benefits</h2>
+                    <p class="text-center">Discover how specific gemstones can enhance your life</p>
+                    
+                    <div class="features-container">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-gem" style="color: #e0115f;"></i>
+                            </div>
+                            <h3>Ruby (Manik)</h3>
+                            <p>Enhances leadership qualities, confidence, and vitality. Associated with the Sun.</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-gem" style="color: #0077be;"></i>
+                            </div>
+                            <h3>Blue Sapphire (Neelam)</h3>
+                            <p>Promotes wisdom, discipline, and focus. Associated with Saturn.</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-gem" style="color: #50c878;"></i>
+                            </div>
+                            <h3>Emerald (Panna)</h3>
+                            <p>Enhances communication, intelligence, and harmony. Associated with Mercury.</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-gem" style="color: #f0e68c;"></i>
+                            </div>
+                            <h3>Yellow Sapphire (Pukhraj)</h3>
+                            <p>Attracts wealth, prosperity, and wisdom. Associated with Jupiter.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        
+        <!-- Booking Page -->
+        <div class="page" id="booking-page">
+            <section id="booking">
+                <div class="container">
+                    <h2>Book Your Consultation</h2>
+                    <p class="text-center">Connect with our pandits for personalized guidance</p>
+                    
+                    <div class="booking-container">
+                        <div class="booking-steps">
+                            <div class="step active" data-step="1">
+                                <div class="step-number">1</div>
+                                <div class="step-text">Select Service</div>
+                            </div>
+                            
+                            <div class="step" data-step="2">
+                                <div class="step-number">2</div>
+                                <div class="step-text">Choose Date & Time</div>
+                            </div>
+                            
+                            <div class="step" data-step="3">
+                                <div class="step-number">3</div>
+                                <div class="step-text">Your Details</div>
+                            </div>
+                            
+                            <div class="step" data-step="4">
+                                <div class="step-number">4</div>
+                                <div class="step-text">Confirmation</div>
+                            </div>
+                        </div>
+                        
+                        <!-- Step 1: Select Service -->
+                        <div class="booking-content active" data-step="1">
+                            <h3>Select Your Service</h3>
+                            <p>Choose the astrology service that best fits your needs</p>
+                            
+                            <div class="service-options">
+                                <div class="service-option" data-service="birth-chart" data-price="120">
+                                    <h4>Birth Chart Reading</h4>
+                                    <p>Comprehensive analysis of your natal chart</p>
+                                    <div class="price">$120</div>
+                                    <p><i class="fas fa-clock"></i> 60 min session</p>
+                                </div>
+                                
+                                <div class="service-option" data-service="relationship" data-price="150">
+                                    <h4>Relationship Compatibility</h4>
+                                    <p>Synastry reading for couples</p>
+                                    <div class="price">$150</div>
+                                    <p><i class="fas fa-clock"></i> 75 min session</p>
+                                </div>
+                                
+                                <div class="service-option" data-service="gemstone" data-price="180">
+                                    <h4>Gemstone Consultation</h4>
+                                    <p>Personalized gemstone recommendations</p>
+                                    <div class="price">$180</div>
+                                    <p><i class="fas fa-clock"></i> 60 min session</p>
+                                </div>
+                            </div>
+                            
+                            <div class="booking-navigation">
+                                <button class="btn btn-gold" disabled>Previous</button>
+                                <button class="btn next-step">Next</button>
+                            </div>
+                        </div>
+                        
+                        <!-- Step 2: Choose Date & Time -->
+                        <div class="booking-content" data-step="2">
+                            <h3>Select Date & Time</h3>
+                            <p>Choose an available time slot for your consultation</p>
+                            
+                            <div class="calendar-container">
+                                <div class="date-picker">
+                                    <div class="date-select">
+                                        <label for="bookingMonth">Month</label>
+                                        <select id="bookingMonth">
+                                            <option value="1">January</option>
+                                            <option value="2">February</option>
+                                            <option value="3">March</option>
+                                            <option value="4">April</option>
+                                            <option value="5">May</option>
+                                            <option value="6">June</option>
+                                            <option value="7">July</option>
+                                            <option value="8">August</option>
+                                            <option value="9">September</option>
+                                            <option value="10" selected>October</option>
+                                            <option value="11">November</option>
+                                            <option value="12">December</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="date-select">
+                                        <label for="bookingDay">Day</label>
+                                        <select id="bookingDay">
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="6">6</option>
+                                            <option value="7">7</option>
+                                            <option value="8">8</option>
+                                            <option value="9">9</option>
+                                            <option value="10">10</option>
+                                            <option value="11">11</option>
+                                            <option value="12">12</option>
+                                            <option value="13">13</option>
+                                            <option value="14">14</option>
+                                            <option value="15">15</option>
+                                            <option value="16">16</option>
+                                            <option value="17">17</option>
+                                            <option value="18">18</option>
+                                            <option value="19" selected>19</option>
+                                            <option value="20">20</option>
+                                            <option value="21">21</option>
+                                            <option value="22">22</option>
+                                            <option value="23">23</option>
+                                            <option value="24">24</option>
+                                            <option value="25">25</option>
+                                            <option value="26">26</option>
+                                            <option value="27">27</option>
+                                            <option value="28">28</option>
+                                            <option value="29">29</option>
+                                            <option value="30">30</option>
+                                            <option value="31">31</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                                <div class="time-slots">
+                                    <div class="time-slot">9:00 AM</div>
+                                    <div class="time-slot">10:30 AM</div>
+                                    <div class="time-slot">12:00 PM</div>
+                                    <div class="time-slot">2:00 PM</div>
+                                    <div class="time-slot">3:30 PM</div>
+                                    <div class="time-slot">5:00 PM</div>
+                                    <div class="time-slot">6:30 PM</div>
+                                </div>
+                            </div>
+                            
+                            <div class="booking-navigation">
+                                <button class="btn btn-gold prev-step">Previous</button>
+                                <button class="btn next-step">Next</button>
+                            </div>
+                        </div>
+                        
+                        <!-- Step 3: Your Details -->
+                        <div class="booking-content" data-step="3">
+                            <h3>Your Information</h3>
+                            <p>Please provide your details for the reading</p>
+                            
+                            <form id="bookingForm">
+                                <div class="form-group">
+                                    <label for="bookingName">Full Name</label>
+                                    <input type="text" id="bookingName" name="bookingName" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="bookingEmail">Email Address</label>
+                                    <input type="email" id="bookingEmail" name="bookingEmail" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="bookingPhone">Phone Number</label>
+                                    <input type="tel" id="bookingPhone" name="bookingPhone" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="bookingDob">Date of Birth</label>
+                                    <input type="date" id="bookingDob" name="bookingDob" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="bookingQuestions">Specific Questions or Topics</label>
+                                    <textarea id="bookingQuestions" name="bookingQuestions" rows="4"></textarea>
+                                </div>
+                                
+                                <div class="booking-summary">
+                                    <h4>Booking Summary</h4>
+                                    <div class="summary-item">
+                                        <span>Service:</span>
+                                        <span id="summaryService">Birth Chart Reading</span>
+                                    </div>
+                                    <div class="summary-item">
+                                        <span>Date:</span>
+                                        <span id="summaryDate">October 19, 2023</span>
+                                    </div>
+                                    <div class="summary-item">
+                                        <span>Time:</span>
+                                        <span id="summaryTime">10:30 AM</span>
+                                    </div>
+                                    <div class="summary-item summary-total">
+                                        <span>Total:</span>
+                                        <span id="summaryTotal">$120</span>
+                                    </div>
+                                </div>
+                            </form>
+                            
+                            <div class="booking-navigation">
+                                <button class="btn btn-gold prev-step">Previous</button>
+                                <button class="btn" id="submitBooking">Complete Booking</button>
+                            </div>
+                        </div>
+                        
+                        <!-- Step 4: Confirmation -->
+                        <div class="booking-content" data-step="4">
+                            <div class="text-center">
+                                <div class="feature-icon" style="font-size: 5rem; color: var(--cosmic-gold); margin-bottom: 30px;">
+                                    <i class="fas fa-check-circle"></i>
+                                </div>
+                                <h3>Booking Confirmed!</h3>
+                                <p>Thank you for scheduling your astrology reading with Cosmic Destiny.</p>
+                                <p>A confirmation email with all the details has been sent to your email address.</p>
+                                
+                                <div class="booking-summary" style="max-width: 500px; margin: 30px auto;">
+                                    <h4>Your Booking Details</h4>
+                                    <div class="summary-item">
+                                        <span>Service:</span>
+                                        <span id="confirmService">Birth Chart Reading</span>
+                                    </div>
+                                    <div class="summary-item">
+                                        <span>Date:</span>
+                                        <span id="confirmDate">October 19, 2023</span>
+                                    </div>
+                                    <div class="summary-item">
+                                        <span>Time:</span>
+                                        <span id="confirmTime">10:30 AM</span>
+                                    </div>
+                                    <div class="summary-item">
+                                        <span>Consultation Method:</span>
+                                        <span>Zoom Meeting</span>
+                                    </div>
+                                    <div class="summary-item summary-total">
+                                        <span>Total:</span>
+                                        <span id="confirmTotal">$120</span>
+                                    </div>
+                                </div>
+                                
+                                <p>We look forward to connecting with you soon!</p>
+                                <a href="#home" class="btn nav-link" data-page="home">Back to Home</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        
+        <!-- Contact Page -->
+        <div class="page" id="contact-page">
+            <section id="contact">
+                <div class="container">
+                    <h2>Connect With Us</h2>
+                    <p class="text-center">Have questions or want to schedule a reading? Reach out to us!</p>
+                    
+                    <div class="contact-container">
+                        <div class="contact-info">
+                            <h3>Get in Touch</h3>
+                            
+                            <div class="contact-details">
+                                <div class="contact-item">
+                                    <div class="contact-icon">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                    </div>
+                                    <div class="contact-text">
+                                        <h4>Address</h4>
+                                        <p>123 Cosmic Way, Astro City, AC 12345</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="contact-item">
+                                    <div class="contact-icon">
+                                        <i class="fas fa-phone-alt"></i>
+                                    </div>
+                                    <div class="contact-text">
+                                        <h4>Phone</h4>
+                                        <p><a href="tel:+11234567890">+1 (123) 456-7890</a></p>
+                                    </div>
+                                </div>
+                                
+                                <div class="contact-item">
+                                    <div class="contact-icon">
+                                        <i class="fas fa-envelope"></i>
+                                    </div>
+                                    <div class="contact-text">
+                                        <h4>Email</h4>
+                                        <p><a href="mailto:info@cosmicdestiny.com">info@cosmicdestiny.com</a></p>
+                                    </div>
+                                </div>
+                                
+                                <div class="contact-item">
+                                    <div class="contact-icon">
+                                        <i class="fas fa-clock"></i>
+                                    </div>
+                                    <div class="contact-text">
+                                        <h4>Working Hours</h4>
+                                        <p>Monday - Friday: 9am - 6pm</p>
+                                        <p>Saturday: 10am - 4pm</p>
+                                        <p>Sunday: Closed</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <h3>Follow Our Cosmic Journey</h3>
+                            <div class="social-links">
+                                <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                                <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                                <a href="#" class="social-link"><i class="fab fa-pinterest"></i></a>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-form">
+                            <form id="contactForm">
+                                <div class="form-group">
+                                    <label for="contactName">Your Name</label>
+                                    <input type="text" id="contactName" name="contactName" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="contactEmail">Email Address</label>
+                                    <input type="email" id="contactEmail" name="contactEmail" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="contactPhone">Phone Number</label>
+                                    <input type="tel" id="contactPhone" name="contactPhone">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="contactService">Service Interested In</label>
+                                    <select id="contactService" name="contactService">
+                                        <option value="">Select a service</option>
+                                        <option value="birth-chart">Birth Chart Reading</option>
+                                        <option value="relationship">Relationship Compatibility</option>
+                                        <option value="gemstone">Gemstone Consultation</option>
+                                        <option value="vastu">Vastu Shastra</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="contactMessage">Your Message</label>
+                                    <textarea id="contactMessage" name="contactMessage" required></textarea>
+                                </div>
+                                
+                                <button type="submit" class="btn">Send Message</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <div class="logo">
+                        <img src="client_logo.jpg" alt="Cosmic Destiny Logo" class="logo-img">
+                        <span class="logo-text">Universe Destiny</span>
+                    </div>
+                    <p>Providing authentic astrological guidance since 2005. Our mission is to help you navigate life's journey with cosmic wisdom.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <a href="#home" class="nav-link" data-page="home">Home</a>
+                    <a href="#about" class="nav-link" data-page="about">About Us</a>
+                    <a href="#chakras" class="nav-link" data-page="chakras">Chakra Science</a>
+                    <a href="#services" class="nav-link" data-page="services">Services</a>
+                    <a href="#compatibility" class="nav-link" data-page="compatibility">Gemstones</a>
+                    <a href="#booking" class="nav-link" data-page="booking">Booking</a>
+                    <a href="#contact" class="nav-link" data-page="contact">Contact</a>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Our Services</h3>
+                    <a href="#services" class="nav-link" data-page="services">Birth Chart Reading</a>
+                    <a href="#services" class="nav-link" data-page="services">Relationship Compatibility</a>
+                    <a href="#services" class="nav-link" data-page="services">Gemstone Consultation</a>
+                    <a href="#services" class="nav-link" data-page="services">Vastu Shastra</a>
+                    <a href="#services" class="nav-link" data-page="services">Career Guidance</a>
+                    <a href="#services" class="nav-link" data-page="services">Yearly Forecast</a>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Contact Info</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Cosmic Way, Astro City, AC 12345</p>
+                    <p><i class="fas fa-phone-alt"></i> +1 (123) 456-7890</p>
+                    <p><i class="fas fa-envelope"></i> info@cosmicdestiny.com</p>
+                    <p><i class="fas fa-clock"></i> Mon-Fri: 9am - 6pm</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; <span id="currentYear"></span> Cosmic Destiny. All Rights Reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Create stars for background
+        function createStars() {
+            const cosmicBg = document.getElementById('cosmicBg');
+            
+            // Create stars
+            for (let i = 0; i < 200; i++) {
+                const star = document.createElement('div');
+                star.classList.add('star');
+                star.style.width = `${Math.random() * 3}px`;
+                star.style.height = star.style.width;
+                star.style.left = `${Math.random() * 100}%`;
+                star.style.top = `${Math.random() * 100}%`;
+                star.style.setProperty('--opacity', Math.random());
+                star.style.setProperty('--duration', `${5 + Math.random() * 10}s`);
+                cosmicBg.appendChild(star);
+            }
+            
+            // Create shooting stars
+            for (let i = 0; i < 5; i++) {
+                const shootingStar = document.createElement('div');
+                shootingStar.classList.add('shooting-star');
+                shootingStar.style.setProperty('--top-start', `${Math.random() * 100}%`);
+                shootingStar.style.setProperty('--left-start', `${Math.random() * 100}%`);
+                shootingStar.style.setProperty('--top-end', `${Math.random() * 100}%`);
+                shootingStar.style.setProperty('--left-end', `${Math.random() * 100}%`);
+                shootingStar.style.setProperty('--duration', `${2 + Math.random() * 3}s`);
+                shootingStar.style.setProperty('--angle', `${-45 + Math.random() * 30}deg`);
+                cosmicBg.appendChild(shootingStar);
+            }
+        }
+        
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mainNav = document.getElementById('mainNav');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
+            mobileMenuBtn.innerHTML = mainNav.classList.contains('active') ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Navigation and Page Transitions
+        const navLinks = document.querySelectorAll('.nav-link');
+        const pages = document.querySelectorAll('.page');
+        
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Remove active class from all links and pages
+                navLinks.forEach(navLink => navLink.classList.remove('active'));
+                pages.forEach(page => page.classList.remove('active'));
+                
+                // Add active class to clicked link
+                this.classList.add('active');
+                
+                // Show the corresponding page
+                const pageId = this.getAttribute('data-page') + '-page';
+                document.getElementById(pageId).classList.add('active');
+                
+                // Scroll to top
+                window.scrollTo(0, 0);
+                
+                // Close mobile menu if open
+                if (mainNav.classList.contains('active')) {
+                    mainNav.classList.remove('active');
+                    mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                }
+            });
+        });
+        
+        // Booking System
+        const bookingSteps = document.querySelectorAll('.step');
+        const bookingContents = document.querySelectorAll('.booking-content');
+        const nextButtons = document.querySelectorAll('.next-step');
+        const prevButtons = document.querySelectorAll('.prev-step');
+        const serviceOptions = document.querySelectorAll('.service-option');
+        const timeSlots = document.querySelectorAll('.time-slot');
+        const submitBookingBtn = document.getElementById('submitBooking');
+        const popup = document.getElementById('popup');
+        const closePopup = document.getElementById('closePopup');
+        const popupButton = document.getElementById('popupButton');
+        const popupMessage = document.getElementById('popupMessage');
+        const bookingMonth = document.getElementById('bookingMonth');
+        const bookingDay = document.getElementById('bookingDay');
+        
+        let currentStep = 1;
+        
+        // Service Selection
+        serviceOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                // Remove selected class from all options
+                serviceOptions.forEach(opt => {
+                    opt.classList.remove('selected');
+                });
+                
+                // Add selected class to clicked option
+                option.classList.add('selected');
+                
+                // Update summary
+                const serviceName = option.querySelector('h4').textContent;
+                const servicePrice = option.getAttribute('data-price');
+                
+                document.getElementById('summaryService').textContent = serviceName;
+                document.getElementById('summaryTotal').textContent = '$' + servicePrice;
+                document.getElementById('confirmService').textContent = serviceName;
+                document.getElementById('confirmTotal').textContent = '$' + servicePrice;
+            });
+        });
+        
+        // Time Slot Selection
+        timeSlots.forEach(slot => {
+            slot.addEventListener('click', () => {
+                // Remove selected class from all slots
+                timeSlots.forEach(s => {
+                    s.classList.remove('selected');
+                });
+                
+                // Add selected class to clicked slot
+                slot.classList.add('selected');
+                
+                // Update summary
+                const time = slot.textContent;
+                const month = bookingMonth.options[bookingMonth.selectedIndex].text;
+                const day = bookingDay.value;
+                
+                document.getElementById('summaryTime').textContent = time;
+                document.getElementById('confirmTime').textContent = time;
+                document.getElementById('summaryDate').textContent = `${month} ${day}, 2023`;
+                document.getElementById('confirmDate').textContent = `${month} ${day}, 2023`;
+            });
+        });
+        
+        // Date Selection
+        bookingMonth.addEventListener('change', updateDateSummary);
+        bookingDay.addEventListener('change', updateDateSummary);
+        
+        function updateDateSummary() {
+            const month = bookingMonth.options[bookingMonth.selectedIndex].text;
+            const day = bookingDay.value;
+            
+            document.getElementById('summaryDate').textContent = `${month} ${day}, 2023`;
+            document.getElementById('confirmDate').textContent = `${month} ${day}, 2023`;
+        }
+        
+        // Next Step
+        nextButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                if (validateStep(currentStep)) {
+                    currentStep++;
+                    updateBookingSteps();
+                }
+            });
+        });
+        
+        // Previous Step
+        prevButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                currentStep--;
+                updateBookingSteps();
+            });
+        });
+        
+        function updateBookingSteps() {
+            // Update step indicators
+            bookingSteps.forEach(step => {
+                const stepNum = parseInt(step.getAttribute('data-step'));
+                
+                step.classList.remove('active', 'completed');
+                
+                if (stepNum < currentStep) {
+                    step.classList.add('completed');
+                } else if (stepNum === currentStep) {
+                    step.classList.add('active');
+                }
+            });
+            
+            // Update content visibility
+            bookingContents.forEach(content => {
+                const contentStep = parseInt(content.getAttribute('data-step'));
+                
+                content.classList.remove('active');
+                
+                if (contentStep === currentStep) {
+                    content.classList.add('active');
+                }
+            });
+            
+            // Scroll to top of booking section
+            document.getElementById('booking').scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        function validateStep(step) {
+            switch(step) {
+                case 1:
+                    const selectedService = document.querySelector('.service-option.selected');
+                    if (!selectedService) {
+                        showPopup('Please select a service to continue');
+                        return false;
+                    }
+                    return true;
+                case 2:
+                    const selectedTime = document.querySelector('.time-slot.selected');
+                    if (!selectedTime) {
+                        showPopup('Please select a time slot to continue');
+                        return false;
+                    }
+                    return true;
+                case 3:
+                    const form = document.getElementById('bookingForm');
+                    if (!form.checkValidity()) {
+                        form.reportValidity();
+                        return false;
+                    }
+                    return true;
+                default:
+                    return true;
+            }
+        }
+        
+        // Submit Booking
+        submitBookingBtn.addEventListener('click', () => {
+            if (validateStep(currentStep)) {
+                currentStep++;
+                updateBookingSteps();
+                showPopup('Your booking has been confirmed!', 'success');
+            }
+        });
+        
+        // Contact Form Submission
+        const contactForm = document.getElementById('contactForm');
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            showPopup('Your message has been sent successfully!', 'success');
+            contactForm.reset();
+        });
+        
+        // Gemstone Form Submission
+        const gemstoneForm = document.getElementById('gemstoneForm');
+        gemstoneForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Get form values
+            const zodiac = document.getElementById('zodiac').value;
+            const purpose = document.getElementById('purpose').value;
+            
+            // Determine gemstone compatibility based on zodiac and purpose
+            let compatibility = 87;
+            let gemstone = "Ruby";
+            let wearingMethod = "Wear Ruby in a gold ring on your ring finger. For maximum benefit, energize your gemstone during a waxing moon.";
+            
+            // Customize results based on zodiac and purpose
+            if (zodiac === "aries" || zodiac === "leo" || zodiac === "sagittarius") {
+                gemstone = "Ruby";
+                if (purpose === "wealth") {
+                    compatibility = 92;
+                } else if (purpose === "love") {
+                    compatibility = 85;
+                }
+            } else if (zodiac === "taurus" || zodiac === "virgo" || zodiac === "capricorn") {
+                gemstone = "Emerald";
+                if (purpose === "health") {
+                    compatibility = 90;
+                } else if (purpose === "career") {
+                    compatibility = 88;
+                }
+                wearingMethod = "Wear Emerald in a silver ring on your little finger. Best energized on Wednesdays.";
+            } else if (zodiac === "gemini" || zodiac === "libra" || zodiac === "aquarius") {
+                gemstone = "Blue Sapphire";
+                if (purpose === "spirituality") {
+                    compatibility = 95;
+                } else if (purpose === "protection") {
+                    compatibility = 89;
+                }
+                wearingMethod = "Wear Blue Sapphire in a gold ring on your middle finger. Energize during Saturn's hour.";
+            } else if (zodiac === "cancer" || zodiac === "scorpio" || zodiac === "pisces") {
+                gemstone = "Pearl";
+                if (purpose === "love") {
+                    compatibility = 93;
+                } else if (purpose === "health") {
+                    compatibility = 87;
+                }
+                wearingMethod = "Wear Pearl in a silver pendant close to your heart. Energize on Monday mornings.";
+            }
+            
+            // Update results
+            document.getElementById('compatibility-percentage').textContent = compatibility + "%";
+            document.getElementById('compatibility-with').textContent = "Compatibility with " + gemstone;
+            document.getElementById('wearing-method').textContent = wearingMethod;
+            
+            // Show results
+            document.getElementById('gemstone-result').style.display = 'block';
+            
+            // Scroll to results
+            document.getElementById('gemstone-result').scrollIntoView({ behavior: 'smooth' });
+        });
+        
+        // Show Popup
+        function showPopup(message, type = 'success') {
+            popupMessage.textContent = message;
+            
+            if (type === 'success') {
+                popup.querySelector('.popup-icon').innerHTML = '<i class="fas fa-check-circle"></i>';
+                popup.querySelector('.popup-icon').style.color = 'var(--cosmic-gold)';
+                popup.querySelector('h3').textContent = 'Success!';
+                popupButton.textContent = 'Continue';
+            } else {
+                popup.querySelector('.popup-icon').innerHTML = '<i class="fas fa-exclamation-circle"></i>';
+                popup.querySelector('.popup-icon').style.color = 'var(--cosmic-pink)';
+                popup.querySelector('h3').textContent = 'Attention!';
+                popupButton.textContent = 'Try Again';
+            }
+            
+            popup.classList.add('active');
+        }
+        
+        // Close Popup
+        closePopup.addEventListener('click', () => {
+            popup.classList.remove('active');
+        });
+        
+        popupButton.addEventListener('click', () => {
+            popup.classList.remove('active');
+        });
+        
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', () => {
+            createStars();
+            
+            // Set current year in footer
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
+            
+            // For demo purposes, select first service option
+            if (serviceOptions.length > 0) {
+                serviceOptions[0].click();
+            }
+            
+            // For demo purposes, select first available time slot
+            if (timeSlots.length > 0) {
+                timeSlots[0].click();
+            }
+        });
+    </script>
+</body>
+</html>
